@@ -6,19 +6,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Weather App in Django</title>
+        <!------------------ Local CSS -------------------------->
         <link rel="stylesheet" href="{% static 'style.css' %}">
+        <!------------------- Bootstrap CSS ---------------------->
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <!---------------------Bootstrap Javascript ---------------->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <!----------------------bootstrap Jquery --------------->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!---------------------- Font Awesome ----------------->
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- <link rel="stylesheet"
-       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-        <!-- jQuery library -->
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-        <!-- Latest compiled JavaScript -->
-        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
     </head>
     <body>
         <header class="header">
@@ -26,16 +25,20 @@
         </header>
         <main role="main">
             <div>
-                <form action="" method="post" class="d-flex justify-content-center mt-5 input-group" >
+                <!---------------Add City Form  ---------------------->
+                <form action=""
+                      method="post"
+                      class="d-flex justify-content-center mt-5 input-group">
                     {% csrf_token %}
-                    {{ form.title }}
+                    {{ form.cityname }}
                     <button type="submit" class="btn btn-primary">Add City</button>
                 </form>
+                <!-------------------Weather lists  ------------------->
                 <section>
                     {% for weather in weather_data %}
                         <div class="container-fluid">
                             <div class="row justify-content-center">
-                                <div class="col-12 col-md-4 col-sm-12 col-xs-12">
+                                <div class="col-12 col-md-6 col-sm-12 col-xs-12">
                                     <div class="card p-4">
                                         <div class="d-flex">
                                             <h5 class="flex-grow-1">{{ weather.city | capfirst }}</h5>
@@ -47,7 +50,7 @@
                                         <div class="d-flex">
                                             <div class="temp-details flex-grow-1">
                                                 <p class="my-1">
-                                                    <img src="https://i.imgur.com/B9kqOzp.png" height="17px">
+                                                    <img src="https://i.imgur.com/B9kqOzp.png" height="17px" alt=".">
                                                     <span>{{ weather.wind_speed }} m/s</span>
                                                 </p>
                                                 <p class="my-1">
@@ -58,8 +61,7 @@
                                                 </p>
                                             </div>
                                             <div>
-                                                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png"
-                                                     >
+                                                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png">
                                             </div>
                                         </div>
                                     </div>
